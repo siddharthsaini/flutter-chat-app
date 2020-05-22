@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
+import 'registration_screen.dart';
+import 'package:Vartalapp/blocks.dart';
+
+// String logo;
 
 class WelcomeScreen extends StatefulWidget {
+  static const id = 'welcomescreen';
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -17,13 +24,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/logo.png'),
+                    height: 40.0,
+                  ),
                 ),
                 Text(
-                  'Flash Chat',
+                  ' Flash Chat',
                   style: TextStyle(
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
@@ -34,41 +45,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            RoundButton(
+              title: "LOGIN",
+              color: Colors.lightBlueAccent,
+              onpressed: () {
+                Navigator.of(context).pushNamed(LoginScreen.id);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
+            RoundButton(
+              title: "REGISTER",
+              color: Colors.blueAccent,
+              onpressed: () {
+                Navigator.of(context).pushNamed(RegistrationScreen.id);
+              },
             ),
           ],
         ),
@@ -76,3 +65,5 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 }
+
+
