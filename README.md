@@ -1,4 +1,4 @@
-# Vartalapp
+# Flutter Chat App
 
 A new Flutter project.
 
